@@ -1,5 +1,5 @@
 {
-    "HOME" : "http://localhost:8080/",
-    "COMMUNICATION": "http://localhost:8000/",
-    "PORT": 8080
+    "HOME" : "http://localhost:8000/",
+    "COMMUNICATION": "http://localhost:8080/",
+    "PORT": 8000
 }
