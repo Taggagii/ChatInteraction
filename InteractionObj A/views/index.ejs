@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Interaction Action
+        </title>
+    </head>
+    <body>
+        <div style = "text-align: center;">
+            <h1 style = "margin-bottom: 0;">Chat Interaction</h1>
+            <p style = "margin-top: 0;">(Check the console for the recieved messages)</p>
+            <br>
+            <div id = "messages-div" style = "display: flex; flex-direction: column-reverse; overflow: scroll; height: 50vh; text-align: left; padding: 3vw; border: 1px solid black; margin-left: 25%; margin-right: 25%;">
+                <% for (var i = 0; i < data['messages'].length ; i++) { %>
+                    <%= data['messages'][i].content %><br>
+                <% } %>
+            </div>
+        
+            <ul>
+
+            </ul>
+            <form action = "/" method = "POST">
+                Message: <input name = "message" id = "messageInput" autofocus="autofocus" placeholder="Your message goes here">
+                <br><br>
+                <input autofocus="autofocus" type = "submit"> 
+            </form>
+            
+        </div>
+        
+        
+        
+    </body>
+    <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src = "/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // Recieve
+        const socket = io.connect();
+        socket.on("message_sent", function(data) {
+            $("#messages-div").append(data.message + "<br>");
+        });
+
+        // Send
+        $("form").submit((event) => {
+            event.preventDefault();
+            let data = {
+                message: $("#messageInput").val()
+            };
+            var url = $('this').attr('action');
+            console.log("testing things");
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                dataType: 'json'
+            }).done($("#messageInput").val(""));
+                    
+        });
+        
+ 
+    </script>
+</html>
