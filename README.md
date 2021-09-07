@@ -1,4 +1,4 @@
-Contained are two files, the point is to put on file on one computer / network, and the other on a different one. 
+Contained are two files, the point is to put one file on one computer / network, and the other on a different one. 
 
 
 Both then modify their 'config' file and place their hosting URL under HOME and the other computer's URL under COMMUNICATION. the PORT is for hosting locally.
